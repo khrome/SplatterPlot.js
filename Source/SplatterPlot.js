@@ -1,11 +1,18 @@
-/***********************************************
- * SplatterPlot v1.1
- ***********************************************
- * Created by Abbey Hawk Sparrow
- * on 01/24/10
- * Last Modified by Abbey Hawk Sparrow
- * on 02/12/10
- ***********************************************/
+/*
+---
+description: A MooTools + Raphaeljs concentric layout widget
+
+license: [MIT-style]
+
+authors:
+- Abbey Hawk Sparrow
+
+requires:
+    core/1.2.4: '*'
+
+provides: [SplatterPlot, SplatterPlotNode, SplatterImageNode]
+...
+*/
  var SplatterImageNode = new Class({
     Extend: SplatterPlotNode,
     create: function(x, y){
