@@ -3,19 +3,19 @@ SplatterPlot.js
 
 Splatterplot is a MooTools + Raphaeljs library for displaying concentric nodes(Images or SVG paths) in vector space.
 
-![Screenshot](http://patternweaver.com/SplatterPlot/SplatterPlot.jpg)
+![Screenshot](http://patternweaver.com/SplatterPlot/SplatterPlot.png)
 
 How to use
 ----------
 
-Recently I’ve been working on some prototypes at work, and we’ve been doing a lot of rapid iteration and one of the ideas called for a splatter plot which was assumed would be fixed, but I had an idea on handling placement purely by linear position, which would then map to some position on a ring (in a series of concentric rings) which, in turn, maps to an X, Y position. I experimentally determined the spacing, number of nodes and radius for the circles and coded up the prototype. The nodes were image based and I’d say maybe 40% of it was dynamic.
+Recently I've been working on some prototypes at work, and we've been doing a lot of rapid iteration and one of the ideas called for a splatter plot which was assumed would be fixed, but I had an idea on handling placement purely by linear position, which would then map to some position on a ring (in a series of concentric rings) which, in turn, maps to an X, Y position. I experimentally determined the spacing, number of nodes and radius for the circles and coded up the prototype. The nodes were image based and I'd say maybe 40% of it was dynamic.
 
-Since that project I’ve been curious if it would be possible to use SVG paths and dynamically scale them to a normalized size as well as clip them, so they align properly. In addition this will allow you to scale up the visualization to any size. The answer is yes, this works quite well.
+Since that project I've been curious if it would be possible to use SVG paths and dynamically scale them to a normalized size as well as clip them, so they align properly. In addition this will allow you to scale up the visualization to any size. The answer is yes, this works quite well.
 
-The central class is the SplatterPlot class, to initialize it you simply reference some empty div on your page and tell it what it’s dimensions are and the maximum number of nodes.
+The central class is the SplatterPlot class, to initialize it you simply reference some empty div on your page and tell it what it's dimensions are and the maximum number of nodes.
 
     var plot = new SplatterPlot('panel_one', 1000, 600, 200);
-Now you just need to add nodes to your visualization. Here, I’m going to add a star. remember, you can just grab any old SVG path without editing, because it will be scaled for you.
+Now you just need to add nodes to your visualization. Here, I'm going to add a star. remember, you can just grab any old SVG path without editing, because it will be scaled for you.
 
    plot.addNode(new SplatterPlotNode(
       "M 46,51 L 31,42 L 17,51 L 22,35 L 8,24 "+
@@ -57,9 +57,9 @@ expansionFactor : this determines the spacing between the layout rings. Initiall
 nodeY : determines the height of each node.
 nodeX : determines the width of each node.
 buffer : This determines the extra space between nodes on a given ring. Initially 0.
-Now it’s time for some examples.
+Now it's time for some examples.
 
-First let’s toss a bunch of random shapes on a canvas:
+First let's toss a bunch of random shapes on a canvas:
 
     var plot = new SplatterPlot('panel_one', 1000, 600, 200);
     plot.nodeX = 100;
@@ -121,7 +121,7 @@ Or a different scale?
          ));
     }
 
-And now let’s see what happens if we just change the seed value (to clearly see the difference, open them in two tabs and flip back and forth).
+And now let's see what happens if we just change the seed value (to clearly see the difference, open them in two tabs and flip back and forth).
 
     var plot = new SplatterPlot('panel_one', 1000, 600, 800);
     plot.nodeX = 10;
@@ -136,9 +136,9 @@ And now let’s see what happens if we just change the seed value (to clearly see 
          ));
     }
 
-I was asked a few times if the splatter plot could support images, and I’d explain how you could extend the node class to do that, but my guess is people would find it useful if it did that 'out of the box'. SVG’s Image rendering uses really poor pixel resampling algorithms, so scaled imaged don’t look as good. In fact I found SVG scaling seems to break down as the draw buffer becomes much larger than your view pane, so it’s a hugely terrible idea to just zoom/scale to infinity in a complex SVG without hand occluding elements offscreen. So now that I’ve fully chastised you for your vector sins, onto the example:
+I was asked a few times if the splatter plot could support images, and I'd explain how you could extend the node class to do that, but my guess is people would find it useful if it did that 'out of the box'. SVG's Image rendering uses really poor pixel resampling algorithms, so scaled imaged don't look as good. In fact I found SVG scaling seems to break down as the draw buffer becomes much larger than your view pane, so it's a hugely terrible idea to just zoom/scale to infinity in a complex SVG without hand occluding elements offscreen. So now that I've fully chastised you for your vector sins, onto the example:
 
-so let’s create 10 instances of 1 of 4 (random) pngs we have laying around.
+so let's create 10 instances of 1 of 4 (random) pngs we have laying around.
 
     window.addEvent('domready', function(){
     
