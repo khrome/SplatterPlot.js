@@ -3,7 +3,7 @@ SplatterPlot.js
 
 Splatterplot is a MooTools + Raphaeljs library for displaying concentric nodes(Images or SVG paths) in vector space.
 
-![Screenshot](http://patternweaver.com/SplatterPlot/SplatterPlot.png)
+![Screenshot](http://patternweaver.com/SplatterPlot/SplatterPlot-s.png)
 
 How to use
 ----------
