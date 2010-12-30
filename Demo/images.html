@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <script type="text/javascript" src="mootools-core-1.3-full-nocompat.js"></script>
+        <script type="text/javascript" src="raphael.js"></script>
+        <script type="text/javascript" src="../Source/SplatterPlot.js"></script>
+        <style>
+            .demo_panel{
+                width:1000px;
+                height: 600px;
+                border:1px solid red;
+                background-color: #CCCCCC;
+            }
+            
+            .popup_panel{
+                width:10px;
+                height: 10px;
+                border:1px solid red;
+                position: absolute;
+                display: block;
+            }
+            
+            body{
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body bgcolor="#000000">
+        <a href="index.html">Index</a> | <a href="full.html">Full</a> | <a href="seed.html">Seed</a> | <a href="alt.html">Alt</a> | <a href="images.html">Images</a>
+        <div id="panel_one" class="demo_panel"></div>
+        <div id="demo_popup" class="popup_panel"></div>
+        <script>
+            window.addEvent('domready', function(){
+                
+                var plot = new SplatterPlot('panel_one', Window.getSize().x-30, Window.getSize().y-40, 200);
+                plot.nodeX = 70;
+                plot.nodeY = 70;
+                plot.seed = 120;
+                plot.buffer = 0;
+                plot.nonSequentialDistributionMode = false;
+                plot.expansionFactor = 0.7;
+                
+                var node, id;
+                for(var lcv=0; lcv < 10; lcv++){
+                    id = Number.random(1,4);
+                    node = new SplatterImageNode(id+'.png');
+                    var root  = new Element('div', {'id': id});
+                    root.inject(document.body);
+                    node.click = function(){
+                        
+                    }
+                    node.mouseover= function(){
+                        this.shape.toFront();
+                        this.shape.animate({
+                            scale: 1.5
+                        }, 300, '<>');
+                    }
+                    node.mouseout= function(){
+                        this.shape.animate({
+                            scale: 0.60
+                        }, 300, '<>');
+                    }
+                    plot.addNode(node);
+                }
+            });
+        </script>
+    </body>
+</html>

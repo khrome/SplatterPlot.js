@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript" src="mootools-core-1.3-full-nocompat.js"></script>
+        <script type="text/javascript" src="raphael.js"></script>
+        <script type="text/javascript" src="../Source/SplatterPlot.js"></script>
+        <style>
+            .demo_panel{
+                width:1000px;
+                height: 600px;
+                border:1px solid red;
+            }
+            
+            .popup_panel{
+                width:10px;
+                height: 10px;
+                border:1px solid red;
+                position: absolute;
+                display: block;
+            }
+            
+            body{
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body bgcolor="#000000">
+        <a href="index.html">Index</a> | <a href="full.html">Full</a> | <a href="seed.html">Seed</a> | <a href="alt.html">Alt</a> | <a href="images.html">Images</a>
+        <div id="panel_one" class="demo_panel"></div>
+        <div id="demo_popup" class="popup_panel"></div>
+        <script>
+            var plot = new SplatterPlot('panel_one', 1000, 600, 200);
+            plot.nodeX = 100;
+            plot.nodeY = 100;
+            plot.seed = 120;
+            plot.buffer = 20;
+            plot.nonSequentialDistributionMode = true;
+            var nodes = [
+                "M 46,51 L 31,42 L 17,51 L 22,35 L 8,24 L 25,23 L 31,7 L 38,23 L 55,24 L 41,35 L 46,51 z",
+                "M 0,34 L 0,53 C 9,60 18,68 26,75 C 35,83 45,90 53,99 C 61,108 70,117 74,132 C 77,146 77,164 74,186 L 63,205 L 63,227 L 83,236 C 89,234 96,233 104,233 C 112,233 123,234 131,237 C 138,241 143,248 146,252 C 150,257 152,261 152,265 L 176,275 L 244,206 L 243,183 L 243,183 C 240,181 237,180 234,178 C 231,176 228,174 226,172 C 250,174 270,175 288,174 C 305,173 317,171 329,168 C 341,165 352,161 358,158 C 363,155 365,154 364,152 C 363,149 361,149 351,144 C 340,139 316,129 302,123 C 289,117 279,113 271,111 L 271,101 L 249,92 L 249,78 L 46,0 C 30,11 15,22 0,34 z",
+                "M 34,168 L 104,168 L 121,123 L 121,70 C 121,63 97,58 97,62 L 97,78 L 97,54 C 97,50 73,47 73,54 L 73,72 L 73,8 C 67,-2 50,2 50,8 L 50,73 L 50,54 C 50,48 26,48 26,54 L 26,104 L 26,78 C 26,71 3,71 3,78 L 3,105 L 34,168 z"
+            ];
+            for(var lcv=0; lcv< 50; lcv++){
+                plot.addNode(new SplatterPlotNode(nodes[Math.floor(Math.random()*nodes.length)]));
+            }
+        </script>
+    </body>
+</html>

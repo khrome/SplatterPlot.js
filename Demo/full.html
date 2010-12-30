@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript" src="mootools-core-1.3-full-nocompat.js"></script>
+        <script type="text/javascript" src="raphael.js"></script>
+        <script type="text/javascript" src="../Source/SplatterPlot.js"></script>
+        <style>
+            .demo_panel{
+                width:1000px;
+                height: 600px;
+                border:1px solid red;
+            }
+            
+            .popup_panel{
+                width:10px;
+                height: 10px;
+                border:1px solid red;
+                position: absolute;
+                display: block;
+            }
+            
+            body{
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body bgcolor="#000000">
+        <a href="index.html">Index</a> | <a href="full.html">Full</a> | <a href="seed.html">Seed</a> | <a href="alt.html">Alt</a> | <a href="images.html">Images</a>
+        <div id="panel_one" class="demo_panel"></div>
+        <div id="demo_popup" class="popup_panel"></div>
+        <script>
+            var plot = new SplatterPlot('panel_one', 1000, 600, 500);
+            plot.nodeX = 50;
+            plot.nodeY = 50;
+            plot.seed = 120;
+            plot.buffer = 20;
+            for(var lcv=0; lcv< 350; lcv++){
+                plot.addNode(new SplatterPlotNode("M 46,51 L 31,42 L 17,51 L 22,35 L 8,24 L 25,23 L 31,7 L 38,23 L 55,24 L 41,35 L 46,51 z"));
+            }
+        </script>
+    </body>
+</html>
